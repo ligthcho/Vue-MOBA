@@ -21,9 +21,10 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 
 ## 路由
 1. admin项目
---创建和配置 新建分类页 CategoryEdit.vue  
-#########
+--创建和配置 新建分类页 CategoryEdit.vue
+
+## 备注
 1. height: 100vh ||代表屏幕高度
 2. 表单 @submit.native.prevent native||原生表单提交,prevent||默认阻止冒泡
-#########
+## 喵
 https://www.bilibili.com/video/av51931842/?p=6
