@@ -8,7 +8,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 
 # 创建 
 1. 创建admin和web || vue create admin vue create web
-2. 在server项目下创建routes 
+2. 在server项目下创建routes、plugins、models文件夹 
 
 # 安装
 1. 启动服务端 package "serve":"nodemon index.js" || npm i -g nodemon
@@ -21,10 +21,13 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 
 ## 路由
 1. admin项目
---创建和配置 新建分类页 CategoryEdit.vue
+--创建和配置 
+新建分类页 CategoryEdit.vue
+列表分类页 CategoryList.vue
 
 ## 备注
 1. height: 100vh ||代表屏幕高度
 2. 表单 @submit.native.prevent native||原生表单提交,prevent||默认阻止冒泡
+3. const Category = require('../../models/Category');  后面要加; 否则报错  xxxx is not function
 ## 喵
 https://www.bilibili.com/video/av51931842/?p=6
