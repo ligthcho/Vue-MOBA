@@ -2,7 +2,6 @@
 module.exports = app =>{
     const mongoose = require("mongoose");
     var db = mongoose.connection;
-
     db.on('open', function(){console.log('connect success')});
     db.on('error', function(){console.log('connect error')}); 
 

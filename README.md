@@ -1,5 +1,7 @@
 # Vue-MOBA
 NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和管理后台
+#开始
+1.分别在admin 和 server 下 运行 npm run serve 
 
 # 目录结构
 1. admin  后台管理界面
@@ -28,6 +30,9 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 ## 备注
 1. height: 100vh ||代表屏幕高度
 2. 表单 @submit.native.prevent native||原生表单提交,prevent||默认阻止冒泡
-3. const Category = require('../../models/Category');  后面要加; 否则报错  xxxx is not function
+3. const Category = require('../../models/Category');  后面要加; 否则报错
+4. 在路由中添加props:true,这样就可以容易获取路由的参数 更容易解耦 
+5. mongoose.SchemaTypes.ObjectId || 表示数据库标识id , ref ||表示关联表
+xxxx is not function
 ## 喵
 https://www.bilibili.com/video/av51931842/?p=6
