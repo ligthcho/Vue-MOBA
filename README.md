@@ -18,14 +18,18 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 element-ui || npm i element-ui -S
    安装 路由 || vue add router 然后选n
    安装 axios ||npm i axios
+   
 3. 在server文件夹下
    安装npm i express@next mongoose cors   || mongoose 连接数据库 允许跨域请求
-
+   安装 字符转换 例如:小写转大写 || npm i inflection
+   安装 处理上传文件 || npm i multer
 ## 路由
 1. admin项目
 --创建和配置 
 新建分类页 CategoryEdit.vue
 列表分类页 CategoryList.vue
+新建物品页 ItemEdit.vue
+列表物品页 ItemList.vue
 
 ## 备注
 1. height: 100vh ||代表屏幕高度
@@ -33,6 +37,9 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 3. const Category = require('../../models/Category');  后面要加; 否则报错
 4. 在路由中添加props:true,这样就可以容易获取路由的参数 更容易解耦 
 5. mongoose.SchemaTypes.ObjectId || 表示数据库标识id , ref ||表示关联表
+6. ./是当前目录../是父级目录 /是根目录
+7. __dirname || 当前文件路径
+8. upload.single('file') || 接收单个文件上传
 xxxx is not function
 ## 喵
 https://www.bilibili.com/video/av51931842/?p=6

@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <h1>新建分类</h1>
+        <h1>{{id?'修改':'新建'}}分类</h1>
         <el-form label-width="120px" @submit.native.prevent="save">
             <el-form-item label="上级分类">
                 <el-select v-model="model.parent" >
@@ -30,9 +30,9 @@ export default {
     methods:{
         async save(){//同步
              if(this.id){//修改保存
-                await this.$http.put(`categories/${this.id}`,this.model)
+                await this.$http.put(`rest/categories/${this.id}`,this.model)
              }else{//新增保存
-                await this.$http.post('categories',this.model)
+                await this.$http.post('rest/categories',this.model)
              }            
              this.$router.push('/categories/list')
              this.$message({
@@ -41,11 +41,11 @@ export default {
              })
         },
         async fetch(){
-            const res = await this.$http.get(`categories/${this.id}`);
+            const res = await this.$http.get(`rest/categories/${this.id}`);
             this.model = res.data
         },
         async fetchPerents(){
-            const res = await this.$http.get('categories');
+            const res = await this.$http.get('rest/categories');
             this.perents = res.data
         }
     },
