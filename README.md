@@ -30,6 +30,8 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 列表分类页 CategoryList.vue
 新建物品页 ItemEdit.vue
 列表物品页 ItemList.vue
+新建英雄页 HeroEdit.vue
+列表英雄页 HeroList.vue
 
 ## 备注
 1. height: 100vh ||代表屏幕高度
