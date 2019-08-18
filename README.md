@@ -23,6 +23,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装npm i express@next mongoose cors   || mongoose 连接数据库 允许跨域请求
    安装 字符转换 例如:小写转大写 || npm i inflection
    安装 处理上传文件 || npm i multer
+   安装 散列 || npm i bcrypt
 ## 路由
 1. admin项目
 --创建和配置 
@@ -32,6 +33,10 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 列表物品页 ItemList.vue
 新建英雄页 HeroEdit.vue
 列表英雄页 HeroList.vue
+新建文章页 ArticleEdit.vue
+列表文章页 ArticleList.vue
+新建广告位页 AdEdit.vue
+列表广告位页 AdList.vue
 
 ## 备注
 1. height: 100vh ||代表屏幕高度

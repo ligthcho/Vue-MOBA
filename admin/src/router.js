@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//登录页
+import Login from './views/Login.vue'
+
 
 import Main from './views/Main.vue'
 //分类
@@ -11,11 +14,20 @@ import ItemList from './views/ItemList.vue'
 //英雄
 import HeroEdit from './views/HeroEdit.vue'
 import HeroList from './views/HeroList.vue'
-
+//文章
+import ArticleEdit from './views/ArticleEdit.vue'
+import ArticleList from './views/ArticleList.vue'
+//广告
+import AdEdit from './views/AdEdit.vue'
+import AdList from './views/AdList.vue'
+//管理员
+import AdminUserEdit from './views/AdminUserEdit.vue'
+import AdminUserList from './views/AdminUserList.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {path:"/login",name:'login',component: Login},
     {
       path: '/',
       name: 'main',
@@ -31,7 +43,19 @@ export default new Router({
 
         {path:'/heroes/create',component:HeroEdit},
         {path:'/heroes/edit/:id',component:HeroEdit,props:true},
-        {path:'/heroes/list',component:HeroList}
+        {path:'/heroes/list',component:HeroList},
+
+        {path:'/articles/create',component:ArticleEdit},
+        {path:'/articles/edit/:id',component:ArticleEdit,props:true},
+        {path:'/articles/list',component:ArticleList},
+
+        {path:'/ads/create',component:AdEdit},
+        {path:'/ads/edit/:id',component:AdEdit,props:true},
+        {path:'/ads/list',component:AdList},
+
+        {path:'/admin_users/create',component:AdminUserEdit},
+        {path:'/admin_users/edit/:id',component:AdminUserEdit,props:true},
+        {path:'/admin_users/list',component:AdminUserList}
       ]
     }
   ]
