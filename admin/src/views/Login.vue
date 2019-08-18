@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     login(){
-      console.log(this.model)
+      //console.log(this.model);
     }
   },
 }
