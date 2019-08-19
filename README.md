@@ -24,6 +24,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 字符转换 例如:小写转大写 || npm i inflection
    安装 处理上传文件 || npm i multer
    安装 散列 || npm i bcrypt
+   安装 登录验证校验 || npm i jsonwebtoken
 ## 路由
 1. admin项目
 --创建和配置 
@@ -37,7 +38,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 列表文章页 ArticleList.vue
 新建广告位页 AdEdit.vue
 列表广告位页 AdList.vue
-
+登录页 Login.vue
 ## 备注
 1. height: 100vh ||代表屏幕高度
 2. 表单 @submit.native.prevent native||原生表单提交,prevent||默认阻止冒泡
@@ -47,6 +48,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 6. ./是当前目录../是父级目录 /是根目录
 7. __dirname || 当前文件路径
 8. upload.single('file') || 接收单个文件上传
-xxxx is not function
+9. localStorage || 关掉浏览器再打开还有 ， sessionStorage || 关掉浏览器再打开就没了
+10. xxxx is not function
 ## 喵
 https://www.bilibili.com/video/av51931842/?p=6
