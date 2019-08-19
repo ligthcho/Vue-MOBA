@@ -4,6 +4,8 @@ module.exports = app => {
     const router = express.Router({
         mergeParams:true//合并url参数 为了能让路由访问到
     });
+    const jwt = require('jsonwebtoken');
+    const AdminUser = require('../../models/AdminUser');
     //导入model
     // const Category = require('../../models/Category');//这里一定要加;号
     //创建分类
@@ -13,7 +15,15 @@ module.exports = app => {
         res.send(items)
     })
     //分类列表
-    router.get('/',async (req,res)=>{
+    router.get('/',async(req,res,next)=>{
+        //pop() 取最后一个数组
+         const token = String(req.headers.authorization || '').split(' ').pop()
+         const {id} = jwt.verify(token,app.get('secret'))
+         console.log(id)
+         req.user = await AdminUser.findById(id)
+
+        await next()
+    },async (req,res)=>{
         const queryOptions = {}
         if(req.Model.modelName ==='Category'){//动态外键
             queryOptions.populate = 'parent'
@@ -57,7 +67,7 @@ module.exports = app => {
     app.post("/admin/api/login",async(req,res)=>{
         const {username,password} = req.body
         //1.根据用户名找用户
-        const AdminUser = require('../../models/AdminUser');
+        
         const user = await AdminUser.findOne({username}).select('+password') //添加查询被隐藏的字段
         if(!user){
             return res.status(422).send({
@@ -72,7 +82,7 @@ module.exports = app => {
             })
         }
         //返回token
-        const jwt = require('jsonwebtoken')
+       
         //取出全局变量
         const token = jwt.sign({id:user._id},app.get('secret'))
         res.send({token})
