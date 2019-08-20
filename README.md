@@ -25,6 +25,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 处理上传文件 || npm i multer
    安装 散列 || npm i bcrypt
    安装 登录验证校验 || npm i jsonwebtoken
+   安装 异常处理 || npm i http-assert
 ## 路由
 1. admin项目
 --创建和配置 
