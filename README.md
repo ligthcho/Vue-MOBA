@@ -20,12 +20,15 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 axios ||npm i axios
    
 3. 在server文件夹下
-   安装npm i express@next mongoose cors   || mongoose 连接数据库 允许跨域请求
+   安装 mongoose 连接数据库 允许跨域请求 || npm i express@next mongoose cors
    安装 字符转换 例如:小写转大写 || npm i inflection
    安装 处理上传文件 || npm i multer
    安装 散列 || npm i bcrypt
    安装 登录验证校验 || npm i jsonwebtoken
    安装 异常处理 || npm i http-assert
+
+4. 在web文件夹下
+   安装 sass || npm i -D sass sass-loader 
 ## 路由
 1. admin项目
 --创建和配置 
