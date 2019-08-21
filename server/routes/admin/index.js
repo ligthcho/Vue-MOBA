@@ -84,7 +84,8 @@ module.exports = app => {
         // }
 
         //2.校验密码
-        const isValid = require('bcrypt').compareSync(password,user.username);
+        const isValid = require('bcrypt').compareSync(password,user.password);
+
         assert(isValid, 422, '密码错误')
         // if (!isValid) {
         //     return res.status(422).send({
