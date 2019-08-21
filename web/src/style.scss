@@ -15,6 +15,10 @@ body{
 a{
     color:#999;
 }
+
+//工具类
+
+
 //定义主色调
 $colors:(
     "primary":#db9e3f,
@@ -33,9 +37,25 @@ $colors:(
         background-color: $color;
     }
 }
-//text
+//定义字体位置 text
 @each $var in (left,center,right) {//循环数组
     .text-#{$var}{
         text-align: $var;
+    }
+}
+//定义字体大小 font size
+//设置-px 设置基础换算字体13px
+$base-font-size:1rem;
+$font-sizes:(
+    xs:0.7692,//10px
+    sm:0.9231,//12px
+    md:1,//13px
+    lg:1.0769,//14px
+    xl:1.2308//16px
+);
+
+@each $sizeKey,$size in $font-sizes {
+    .fs-#{sizeKey}{
+        font-size: $size * $base-font-size;
     }
 }
