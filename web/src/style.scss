@@ -1,61 +1,195 @@
 //重置样式
-*{
-    box-sizing: border-box;//内容挤压
-    outline: none;//取消边框
+* {
+    box-sizing: border-box; //内容挤压
+    outline: none; //取消边框
 }
-html{
+
+html {
     font-size: 13px;
 }
-body{
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;//sans-serif 非衬线字体
-    line-height: 1.2em;//行高
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif; //sans-serif 非衬线字体
+    line-height: 1.2em; //行高
     background: #f1f1f1;
-}
-a{
-    color:#999;
+    -webkit-font-smoothing:antialiased; //字体抗锯齿渲染
 }
 
-//工具类
+a {
+    color: #999;
+}
 
+//工具类(以工具类概念定制初始化css)
 
 //定义主色调
-$colors:(
-    "primary":#db9e3f,
+$colors:("primary":#db9e3f,
     "white":#fff,
     "light":#f9f9f9,
     "grey":#999,
+    "grey-1":#666,
     "dark-1":#343440,
     "dark":#222,
-    "black":#000
-);
-@each $colorKey,$color in $colors {//循环对象
-    .text-#{$colorKey}{
+    "black":#000);
+
+@each $colorKey,
+$color in $colors {
+
+    //循环对象
+    .text-#{$colorKey} {
         color: $color;
     }
-    .bg-#{$colorKey}{
+
+    .bg-#{$colorKey} {
         background-color: $color;
     }
 }
+
 //定义字体位置 text
-@each $var in (left,center,right) {//循环数组
-    .text-#{$var}{
+@each $var in (left, center, right) {
+
+    //循环数组
+    .text-#{$var} {
         text-align: $var;
     }
 }
+
 //定义字体大小 font size
 //设置-px 设置基础换算字体13px
 $base-font-size:1rem;
 $font-sizes:(
-    xs:0.7692,//10px
-    sm:0.9231,//12px
-    md:1,//13px
-    lg:1.0769,//14px
-    xl:1.2308//16px
+    xxs:0.6154,//8px
+    xs:0.7692, //10px
+    sm:0.9231, //12px
+    md:1, //13px
+    lg:1.0769, //14px
+    xl:1.2308 //16px
 );
 
-@each $sizeKey,$size in $font-sizes {
-    .fs-#{sizeKey}{
+@each $sizeKey,
+$size in $font-sizes {
+    .fs-#{$sizeKey} {
         font-size: $size * $base-font-size;
     }
+}
+
+// flex
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column; //垂直方向 这时jc表示垂直方向布局，ai是水平方向的布局
+}
+
+//主轴对齐方式
+$flex-jc:(start:flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around,
+);
+
+@each $key,
+$value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+
+//纵轴对齐方式
+$flex-ai:(start:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch, //元素被拉伸以适应容器
+);
+
+@each $key,
+$value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+
+//当左边固定宽度时，右边自动撑满
+.flex-1 {
+    flex: 1; //这是简写
+}
+
+.flex-grow-1 {
+    flex-grow: 1; //这是详写
+}
+
+//定义 常用边距 spacing
+//范围级别 0-5:0
+// .mt-1 => margin-top .pb-2
+$spacing-types:(m:margin,
+    p:padding,
+);
+$spacing-directions:(t:top,
+    r:right,
+    b:bottom,
+    l:left,
+);
+$spacing-base-size:1rem;
+$spacing-sizes:(0:0,
+    1:0.25,
+    2:0.5,
+    3:1,
+    4:1.5,
+    5:3,
+);
+//m-0,mx-0
+
+//.m-1  上下左右相等
+@each $typeKey,$type in $spacing-types {
+        @each $sizeKey,$size in $spacing-sizes {           
+            .#{$typeKey}-#{$sizeKey}{
+                #{$type}: $size * $spacing-base-size
+            }
+        }
+}
+
+//.mx-1 水平方向相等,.my-1 垂直方向相等
+@each $typeKey,$type in $spacing-types {
+    @each $sizeKey,$size in $spacing-sizes {           
+        .#{$typeKey}x-#{$sizeKey}{
+            #{$type}-left:$size*$spacing-base-size;
+            #{$type}-right:$size*$spacing-base-size;
+        }
+        .#{$typeKey}y-#{$sizeKey}{
+            #{$type}-top:$size*$spacing-base-size;
+            #{$type}-bottom:$size*$spacing-base-size;
+        }
+    }
+}
+
+
+//.mt-1 {margin-top:0.25rem}
+@each $typeKey,$type in $spacing-types {
+    @each $directionKey,$direction in $spacing-directions {
+        @each $sizeKey,$size in $spacing-sizes {           
+            .#{$typeKey}#{$directionKey}-#{$sizeKey}{
+                #{$type}-#{$direction}: $size * $spacing-base-size
+            }
+        }
+    }
+}
+//定义 按钮 button
+.btn{
+    border: none;
+    border-radius: 0.1538rem;//2px
+    font-size: map-get($font-sizes,'sm') *$base-font-size;  //map-get()  取楼上的键值对
+    padding:0.2rem 0.6rem;
+}
+//定义 导航菜单 nav
+.nav{
+    .nav-item{//给它们都加边框是为了对齐，不加有可能对不齐
+        border-bottom: 3px solid transparent;//透明实线
+        padding-bottom: 0.2rem;
+    &.active{ //加了& 等于 .nav-item  ,不是子集的意思
+            border-bottom: 3px solid #fff;
+        }
+    }
+    
 }

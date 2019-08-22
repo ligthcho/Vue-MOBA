@@ -29,6 +29,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 
 4. 在web文件夹下
    安装 sass || npm i -D sass sass-loader 
+   安装 router || vue add router
 ## 路由
 1. admin项目
 --创建和配置 
