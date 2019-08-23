@@ -1,0 +1,201 @@
+//这里scss内部引用创建的时候最好加下划线这是scss规范,引用的时候不用加
+@import './variables';
+
+
+//重置样式
+* {
+    box-sizing: border-box; //内容挤压
+    outline: none; //取消边框
+}
+
+html {
+    font-size: 13px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif; //sans-serif 非衬线字体
+    line-height: 1.2em; //行高
+    background: #f1f1f1;
+    -webkit-font-smoothing: antialiased; //字体抗锯齿渲染
+}
+
+a {
+    color: #999;
+}
+
+//工具类(以工具类概念定制初始化css)
+
+
+@each $colorKey,
+$color in $colors {
+
+    //循环对象
+    .text-#{$colorKey} {
+        color: $color;
+    }
+
+    .bg-#{$colorKey} {
+        background-color: $color;
+    }
+}
+
+//定义字体位置 text
+@each $var in (left, center, right) {
+
+    //循环数组
+    .text-#{$var} {
+        text-align: $var !important;
+    }
+}
+
+
+@each $sizeKey,
+$size in $font-sizes {
+    .fs-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
+
+//width,height
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+// flex
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column; //垂直方向 这时jc表示垂直方向布局，ai是水平方向的布局
+}
+.flex-wrap{
+    flex-wrap: wrap;//换行
+}
+
+
+
+@each $key,
+$value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+
+
+@each $key,
+$value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+
+//当左边固定宽度时，右边自动撑满
+.flex-1 {
+    flex: 1; //这是简写
+}
+
+.flex-grow-1 {
+    flex-grow: 1; //这是详写
+}
+
+//定义 常用边距 spacing
+
+//m-0,mx-0
+
+//.m-1  上下左右相等
+@each $typeKey,
+$type in $spacing-types {
+
+    @each $sizeKey,
+    $size in $spacing-sizes {
+        .#{$typeKey}-#{$sizeKey} {
+            #{$type}: $size * $spacing-base-size
+        }
+    }
+}
+
+//.mx-1 水平方向相等,.my-1 垂直方向相等
+@each $typeKey,
+$type in $spacing-types {
+
+    @each $sizeKey,
+    $size in $spacing-sizes {
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$type}-left: $size*$spacing-base-size;
+            #{$type}-right: $size*$spacing-base-size;
+        }
+
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size*$spacing-base-size;
+            #{$type}-bottom: $size*$spacing-base-size;
+        }
+    }
+}
+
+
+//.mt-1 {margin-top:0.25rem}
+@each $typeKey,
+$type in $spacing-types {
+
+    @each $directionKey,
+    $direction in $spacing-directions {
+
+        @each $sizeKey,
+        $size in $spacing-sizes {
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$type}-#{$direction}: $size * $spacing-base-size
+            }
+        }
+    }
+}
+
+//定义 按钮 button
+.btn {
+    border: none;
+    border-radius: 0.1538rem; //2px
+    font-size: map-get($font-sizes, 'sm') *$base-font-size; //map-get()  取楼上的键值对
+    padding: 0.2rem 0.6rem;
+}
+
+//定义 导航菜单 nav
+.nav {
+    .nav-item {
+        //给它们都加边框是为了对齐，不加有可能对不齐
+        border-bottom: 3px solid transparent; //透明实线
+        padding-bottom: 0.2rem;
+
+        &.active {
+            //加了& 等于 .nav-item  ,不是子集的意思
+            border-bottom: 3px solid #fff;
+        }
+    }
+}
+
+//精灵图 sprite
+.sprite{
+    background: url(../images/index.png) no-repeat 0 0;//不重复, 0 0 表示左上角对齐
+    background-size: 28.8462rem;//375px
+    display: inline-block;//让i 可以设置宽高
+    &.sprite-news {//第一个图标
+        width: 1.7692rem;//23px
+        height: 1.5385rem;//20px
+        background-position:63.546% 15.517%;//通过背景定位决定
+    }
+    &.sprite-story{
+        //第二个图标 如此类推
+        width: 1.7692rem;//23px
+        height: 1.5385rem;//20px
+        background-position:63.546% 15.517%;//通过背景定位决定
+    }
+    &.sprite-arrow{//箭头
+        width:0.7692rem;
+        height: 0.7692rem;
+        background-position: 38.577% 52.076%;
+    }
+}
