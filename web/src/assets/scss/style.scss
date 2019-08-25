@@ -74,8 +74,9 @@ $size in $font-sizes {
 .flex-column {
     flex-direction: column; //垂直方向 这时jc表示垂直方向布局，ai是水平方向的布局
 }
-.flex-wrap{
-    flex-wrap: wrap;//换行
+
+.flex-wrap {
+    flex-wrap: wrap; //换行
 }
 
 
@@ -165,36 +166,52 @@ $type in $spacing-types {
 
 //定义 导航菜单 nav
 .nav {
+    display: flex;
+
     .nav-item {
         //给它们都加边框是为了对齐，不加有可能对不齐
         border-bottom: 3px solid transparent; //透明实线
         padding-bottom: 0.2rem;
 
         &.active {
+            color: map-get($colors, 'primary');
             //加了& 等于 .nav-item  ,不是子集的意思
-            border-bottom: 3px solid #fff;
+            border-bottom: 3px solid map-get($colors, 'primary');
+        }
+    }
+    &.nav-inverse{//反色
+        .nav-item{
+            color:map-get($colors, 'white');
+        }
+        &.active{
+            border-bottom-color: map-get($colors,'white');
         }
     }
 }
 
 //精灵图 sprite
-.sprite{
-    background: url(../images/index.png) no-repeat 0 0;//不重复, 0 0 表示左上角对齐
-    background-size: 28.8462rem;//375px
-    display: inline-block;//让i 可以设置宽高
-    &.sprite-news {//第一个图标
-        width: 1.7692rem;//23px
-        height: 1.5385rem;//20px
-        background-position:63.546% 15.517%;//通过背景定位决定
+.sprite {
+    background: url(../images/index.png) no-repeat 0 0; //不重复, 0 0 表示左上角对齐
+    background-size: 28.8462rem; //375px
+    display: inline-block; //让i 可以设置宽高
+
+    &.sprite-news {
+        //第一个图标
+        width: 1.7692rem; //23px
+        height: 1.5385rem; //20px
+        background-position: 63.546% 15.517%; //通过背景定位决定
     }
-    &.sprite-story{
+
+    &.sprite-story {
         //第二个图标 如此类推
-        width: 1.7692rem;//23px
-        height: 1.5385rem;//20px
-        background-position:63.546% 15.517%;//通过背景定位决定
+        width: 1.7692rem; //23px
+        height: 1.5385rem; //20px
+        background-position: 63.546% 15.517%; //通过背景定位决定
     }
-    &.sprite-arrow{//箭头
-        width:0.7692rem;
+
+    &.sprite-arrow {
+        //箭头
+        width: 0.7692rem;
         height: 0.7692rem;
         background-position: 38.577% 52.076%;
     }

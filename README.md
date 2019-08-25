@@ -33,7 +33,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 swiper || npm install vue-awesome-swiper --save
 ## 路由
 1. admin项目
---创建和配置 
+--页面 
 新建分类页 CategoryEdit.vue
 列表分类页 CategoryList.vue
 新建物品页 ItemEdit.vue
@@ -45,6 +45,9 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 新建广告位页 AdEdit.vue
 列表广告位页 AdList.vue
 登录页 Login.vue
+2. web项目
+--页面
+
 ## 备注
 1. height: 100vh ||代表屏幕高度
 2. 表单 @submit.native.prevent native||原生表单提交,prevent||默认阻止冒泡

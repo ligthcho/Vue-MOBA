@@ -12,7 +12,7 @@
         </div>
         <div class="bg-primary pt-3 pb-2">
             <!-- 左右有边距用jc-around  没有边距就用between -->
-            <div class="nav d-flex text-white jc-around pb-1">
+            <div class="nav nav-inverse pb-1 jc-around">
                 <div class="nav-item active">
                     <!-- 这里tag改成div就不用重置a链接样式 -->
                     <router-link class="nav-link" tag="div" to="/">首页</router-link>
