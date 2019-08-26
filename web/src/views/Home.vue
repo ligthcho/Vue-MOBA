@@ -32,12 +32,17 @@
     </div>
     <!-- end:导航菜单 -->
     <m-list-card icon="menu" title="新闻资讯" :categories="newsCats">
-      <!-- <div class="py-2" v-for="n in 5" :key="n">
-        <span>[新闻]</span>
-        <span>|</span>
-        <span>{{m}}夏日新版本“星之队”即将6月上线</span>
-        <span>06/02</span>
-      </div>-->
+      <!-- 这里是父组件传值给子组件 emmm有点绕 -->
+      <template #items="{category}">
+        <div>
+          <div class="py-2" v-for="(news,i) in category.newsList" :key="i">
+            <span>[{{news.categoryName}}]</span>
+            <span>|</span>
+            <span>{{i}}{{news.title}}</span>
+            <span>{{news.date}}</span>
+          </div>
+        </div>
+      </template>
     </m-list-card>
     <!-- <m-list-card icon="menu" title="英雄列表"></m-list-card> -->
   </div>
@@ -66,7 +71,7 @@ export default {
           name: "新闻",
           newsList: new Array(5).fill(1).map(v => ({
             //这个语法是一个对象重复5个的意思
-            categoryName: "公告",
+            categoryName: "新闻",
             title: "6月2日全服不停机更新公告",
             date: "06/01"
           }))
@@ -84,7 +89,7 @@ export default {
           name: "活动",
           newsList: new Array(5).fill(1).map(v => ({
             //这个语法是一个对象重复5个的意思
-            categoryName: "公告",
+            categoryName: "活动",
             title: "6月2日全服不停机更新公告",
             date: "06/01"
           }))
@@ -93,7 +98,7 @@ export default {
           name: "赛事",
           newsList: new Array(5).fill(1).map(v => ({
             //这个语法是一个对象重复5个的意思
-            categoryName: "公告",
+            categoryName: "赛事",
             title: "6月2日全服不停机更新公告",
             date: "06/01"
           }))

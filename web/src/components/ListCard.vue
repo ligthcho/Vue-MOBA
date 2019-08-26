@@ -13,13 +13,16 @@
     </div>
     <div class="pt-3">
       <swiper>
-        <swiper-slide v-for="m in 5" :key="m">
-          <div class="py-2" v-for="n in 5" :key="n">
+        <!-- 幻灯片循环 -->
+        <swiper-slide v-for="(category,i) in categories" :key="i">
+          <slot name="items" :category="category"></slot>
+          
+          <!-- <div class="py-2" v-for="n in 5" :key="n">
             <span>[新闻]</span>
             <span>|</span>
-            <span>{{m}}夏日新版本“星之队”即将6月上线</span>
+            <span>{{i}}夏日新版本“星之队”即将6月上线</span>
             <span>06/02</span>
-          </div>
+          </div> -->
         </swiper-slide>
       </swiper>
     </div>
