@@ -71,7 +71,9 @@
         </el-header>
 
         <el-main>
-          <router-view></router-view>
+          <!-- bug:当新建和修改同一个页面时，切换页面时不能更新 -->
+          <!-- 解决：加 :key="$route.path"-->
+          <router-view :key="$route.path"></router-view>
           <!-- <el-table :data="tableData">
         <el-table-column prop="date" label="日期" width="140">
         </el-table-column>

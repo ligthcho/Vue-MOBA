@@ -10,7 +10,10 @@ app.use('/uploads',express.static(__dirname+'/uploads'))
 app.set('secret','i2u34y23ioiuou')
 
 require('./plugins/db')(app)
+//引用路由 routes文件夹下
 require('./routes/admin')(app)
+require('./routes/web')(app)
+
 
 app.listen(3000,()=>{
     console.log('http://localhost:3000')

@@ -33,3 +33,10 @@ export default {
     
 }
 </script>
+<style lang="scss">
+    .topbar{
+        position: sticky;//吸顶效果 这个css3最新的手机能支持,兼容性问题去网上搜
+        top:0;
+        z-index: 999;
+    }
+</style>

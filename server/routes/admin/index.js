@@ -28,7 +28,7 @@ module.exports = app => {
         if (req.Model.modelName === 'Category') { //动态外键
             queryOptions.populate = 'parent'
         }
-        const items = await req.Model.find().setOptions(queryOptions).limit(10); //limit || 限制10条 populate || 查出关联分类 返回关联对象
+        const items = await req.Model.find().setOptions(queryOptions).limit(100); //limit || 限制100条 populate || 查出关联分类 返回关联对象
         res.send(items)
     })
     //单分类详情

@@ -26,6 +26,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 散列 || npm i bcrypt
    安装 登录验证校验 || npm i jsonwebtoken
    安装 异常处理 || npm i http-assert
+   安装 把某一个文件夹的文件使用进来||npm i require-all
 
 4. 在web文件夹下
    安装 sass || npm i -D sass sass-loader 
@@ -59,5 +60,6 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 8. upload.single('file') || 接收单个文件上传
 9. localStorage || 关掉浏览器再打开还有 ， sessionStorage || 关掉浏览器再打开就没了
 10. xxxx is not function
+11. Chrome-console里 能用$$('.news_list .title').map(el=>el.innerHTML).slice(5)的语法
 ## 喵
-https://www.bilibili.com/video/av51931842/?p=6
+51931842
