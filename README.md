@@ -17,7 +17,7 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
 2. 在admin文件夹下 
    安装 element-ui || npm i element-ui -S
    安装 路由 || vue add router 然后选n
-   安装 axios ||npm i axios
+   安装 接口请求 ||npm i axios
    
 3. 在server文件夹下
    安装 mongoose 连接数据库 允许跨域请求 || npm i express@next mongoose cors
@@ -32,6 +32,8 @@ NodeJs + VueJs (Express + ElementUI) 全栈开发王者荣耀手机端官网和�
    安装 sass || npm i -D sass sass-loader 
    安装 router || vue add router
    安装 swiper || npm install vue-awesome-swiper --save
+   安装 接口请求 ||npm i axios
+   安装 处理时间格式 || npm i dayjs
 ## 路由
 1. admin项目
 --页面 

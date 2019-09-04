@@ -50,11 +50,20 @@ $color in $colors {
 }
 
 
+
 @each $sizeKey,
 $size in $font-sizes {
     .fs-#{$sizeKey} {
         font-size: $size * $base-font-size;
     }
+}
+
+//text-ellipsis  || 超出范围超出部分用省略号代替
+.text-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;//不换行
 }
 
 //width,height
