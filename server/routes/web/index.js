@@ -63,7 +63,7 @@ module.exports = app => { //给手机端接口路由
                     from: 'articles',
                     localField: "_id",
                     foreignField: 'categories',
-                    as:'newsList'
+                    as: 'newsList'
                 }
             },
             {
@@ -75,24 +75,39 @@ module.exports = app => { //给手机端接口路由
             }
         ])
         //插入“热门”分类
-        const subCats = cats.map(v=>v._id)
+        const subCats = cats.map(v => v._id)
         cats.unshift({
-            name:'热门',
-            newsList:await Article.find().where({
-                categories:{$in:subCats}
+            name: '热门',
+            newsList: await Article.find().where({
+                categories: {
+                    $in: subCats
+                }
             }).populate('categories').limit(5).lean()
         })
         //‘热门’分类处理
-        cats.map(cat=>{
-            cat.newsList.map(news=>{
-                news.categoryName = cat.name === '热门'
-                ? news.categories[0].name:cat.name
+        cats.map(cat => {
+            cat.newsList.map(news => {
+                news.categoryName = cat.name === '热门' ?
+                    news.categories[0].name : cat.name
                 return news
             })
             return cat
         })
-       
+
         res.send(cats)
     })
+    //初始化英雄数据
+    // $$('.hero-nav >li').map((li, i) => {
+    //     return {
+    //         name: li.innerText,
+    //         heroes: $$('li', $$('.hero-list')[i]).map(el => {
+    //             return {
+    //                 name: $$('h3', el)[0].innerHTML,
+    //                 avatar: $$('img', el)[0].src
+    //             }
+    //         })
+    //     }
+    // })
+
     app.use('/web/api', router)
 }
