@@ -16,7 +16,8 @@
       <!-- ref || 相当于Html里面的id -->
       <!-- slide-change || 轮播图切换事件 -->
       <!-- $refs.list.swiper.realIndex || 轮播图当前id -->
-      <swiper ref="list" @slide-change="() => active = $refs.list.swiper.realIndex">
+      <!-- autoHeight:true || 高度自适应-->
+      <swiper ref="list" @slide-change="() => active = $refs.list.swiper.realIndex" :options="{autoHeight:true}">
         <!-- 幻灯片循环 -->
         <swiper-slide v-for="(category,i) in categories" :key="i">
           <slot name="items" :category="category"></slot>

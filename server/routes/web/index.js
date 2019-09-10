@@ -467,5 +467,52 @@ module.exports = app => { //给手机端接口路由
 
         res.send(await Hero.find())
     })
+    //获取英雄列表
+    router.get('/heroes/list', async (req, res) => {
+
+        const parent = await Category.findOne({
+            name: "英雄分类"
+        })
+        //aggregate || 聚合查询 
+        //match || 条件查询 类似where
+        //lookup || 外键关联查询
+        //addFields || 字段过滤
+        //1.查出新闻分类的子分类
+        //2.查出各各子分类下文章集合
+        //3.过滤文章集合只有其中5条  
+        const cats = await Category.aggregate([{
+                $match: {
+                    parent: parent._id
+                }
+            },
+            {
+                $lookup: { //表名这里没有在 mongoose.model() 设置第三个参数，这里默认用表名复数
+                    from: 'heroes',
+                    localField: "_id",
+                    foreignField: 'categories',
+                    as: 'heroList'
+                }
+            }
+            // ,{
+            //     $addFields: {
+            //         newsList: {
+            //             $slice: ['$newsList', 5]
+            //         }
+            //     }
+            // }
+        ])
+        //插入“热门”分类
+        const subCats = cats.map(v => v._id)
+        cats.unshift({
+            name: '热门',
+            heroList: await Hero.find().where({
+                categories: {
+                    $in: subCats
+                }
+            }).populate('categories').limit(10).lean()
+        })
+
+        res.send(cats)
+    })
     app.use('/web/api', router)
 }
